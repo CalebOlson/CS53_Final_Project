@@ -35,6 +35,15 @@ struct point
 };
 
 
+//Represents a piece of trash. Contains a name and the value of the trash when
+//used in a project.
+struct Trash
+{
+  string m_name;  //The trash's name
+  int m_value   //The value of the trash when used in a project
+}
+
+
 /*---------- Class Function Comments ----------*/
 
 //classmate():
