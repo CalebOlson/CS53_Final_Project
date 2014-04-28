@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
-//Programmer: Caleb Olson               Date: 4-19-14
-//File: driver.cpp                      Class: CS53 Section B
+//Programmer: Caleb Olson and Sawyer McLane  Date: 4-28-14
+//File: driver.cpp                           Class: CS53 Section B
 //Purpose: Create and test objects of the classmate and schoolyard class'.
 //-----------------------------------------------------------------------------
 
