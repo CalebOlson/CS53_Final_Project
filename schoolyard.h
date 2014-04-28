@@ -77,13 +77,15 @@ class schoolyard
     friend ostream & operator << (ostream & os, const schoolyard 
                                   & my_yard);
     
+    int get_trash_count()const;
+    
   private:
     
     //represents the schoolyard as a 2D array of chars
     char m_schoolyard_map[MAX_SCHOOLYARD_SIZE][MAX_SCHOOLYARD_SIZE];
     short m_yard_size;  //The size of the schoolyard in one direction
     short m_school_size;  //size of the school in one direction
-    
+    int m_trash_count; //How much trash is in the yard
     
     void build_school();
     

@@ -49,7 +49,7 @@ short schoolyard::get_school_size()const
 void schoolyard::build_school()
 {
   //number of pieces of trash that should be placed in the schoolyard
-  int num_pieces_trash = ((m_yard_size * m_yard_size) - 
+  int m_trash_count = ((m_yard_size * m_yard_size) - 
                          (m_school_size * m_school_size)) * 
                          (static_cast<float>(PERCENT_TRASH) / 100);
   
@@ -74,7 +74,7 @@ void schoolyard::build_school()
   }
   
   //places the trash
-  while(num_pieces_trash > 0)
+  while(m_trash_count > 0)
   {
     trash_X = rand()%(m_yard_size);
     trash_Y = rand()%(m_yard_size);
@@ -82,14 +82,17 @@ void schoolyard::build_school()
     if(m_schoolyard_map[trash_X][trash_Y] == ' ')
     {
       m_schoolyard_map[trash_X][trash_Y] = TRASH;
-      num_pieces_trash--;
+      m_trash_count--;
     }
   }
   
   return;
 }
 
-
+int schoolyard::get_trash_count()const
+{
+  return m_trash_count;
+}
 /*----- Friend Functions -----*/
 
 ostream & operator << (ostream & os, const schoolyard & my_yard)
