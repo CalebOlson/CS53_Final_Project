@@ -62,6 +62,11 @@ const char EMPTY_SPACE = ' ';  //a position with nothing in it.
 //pre: x and y are between 0 and MAX_SCHOOLYARD_SIZE
 //post: returns the char value in the cell
 
+//set_cell(const char c, const short x, const short y):
+//changes the specified cell in m_schoolyard_map to the desired char 
+//pre: x and y are between 0 and MAX_SCHOOLYARD_SIZE
+//post: the char value at x,y in the map will be changed to c.
+
 //build_school():
 //fills the schoolyard with empty space and then adds a school, a door, and
 //trash
@@ -90,6 +95,8 @@ class schoolyard
     short get_trash_count()const;
     
     char get_cell(const short x, const short y)const;
+    
+    bool set_cell(const char c, const short x, const short y);
   private:
     
     //represents the schoolyard as a 2D array of chars

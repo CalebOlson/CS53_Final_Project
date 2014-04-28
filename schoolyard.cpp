@@ -98,6 +98,17 @@ char schoolyard::get_cell(const short x, const short y)const
 {
   return m_schoolyard_map[x][y];
 }
+
+bool schoolyard::set_cell(const char c, const short x, const short y)
+{
+  bool isSet = false;
+  if(x >= 0 && x < MAX_SCHOOLYARD_SIZE && y >= 0 && y < MAX_SCHOOLYARD_SIZE)
+  {
+    m_schoolyard_map[x][y] = c;
+    isSet = true;
+  }
+  return isSet;
+}
 /*----- Friend Functions -----*/
 
 ostream & operator << (ostream & os, const schoolyard & my_yard)
