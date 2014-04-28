@@ -40,8 +40,8 @@ struct point
 struct Trash
 {
   string m_name;  //The trash's name
-  int m_value   //The value of the trash when used in a project
-}
+  int m_value;   //The value of the trash when used in a project
+};
 
 
 /*---------- Class Function Comments ----------*/
@@ -91,7 +91,7 @@ class classmate
     
     classmate(const string name = DEFAULT_NAME);
     
-    void go_to_school(school_yard & my_schoolyard);
+    void go_to_school(/*schoolyard & my_schoolyard*/);
     
     bool set_IQ(const short IQ);
     
@@ -106,7 +106,7 @@ class classmate
     string m_name;  //The name of the classmate
     point m_position;  //the position of the classmate on the schoolyard
     short m_IQ;  //the intelligence quotient of the classmate
-    trash pocket[POCKET_SIZE];  //the size of the classmate's pocket
+    Trash pocket[POCKET_SIZE];  //the size of the classmate's pocket
     
 };
 

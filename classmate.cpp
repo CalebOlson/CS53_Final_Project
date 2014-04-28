@@ -20,11 +20,11 @@ classmate::classmate(const string name)
   //assign an IQ to this classmate
   set_IQ(rand()%(MAX_IQ - MIN_IQ + 1) + MIN_IQ);
   
-  place();
+  go_to_school();
 }
 
   
-void classmate::go_to_school(schoolyard & my_schoolyard)
+void classmate::go_to_school(/*schoolyard & my_schoolyard*/)
 {
   m_position.m_val_X = rand()%(MAX_SCHOOLYARD_SIZE);
   m_position.m_val_Y = rand()%(MAX_SCHOOLYARD_SIZE);

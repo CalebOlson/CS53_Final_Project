@@ -52,7 +52,7 @@ int main()
   cout << "\n" << endl;
   
   //tests the place() function
-  ralph.place();
+  ralph.go_to_school();
   cout << ralph << endl;
   
   cout << "\n" << endl;
