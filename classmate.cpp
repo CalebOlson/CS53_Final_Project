@@ -24,7 +24,7 @@ classmate::classmate(const string name)
 }
 
   
-void classmate::place()
+void classmate::go_to_school(schoolyard & my_schoolyard)
 {
   m_position.m_val_X = rand()%(MAX_SCHOOLYARD_SIZE);
   m_position.m_val_Y = rand()%(MAX_SCHOOLYARD_SIZE);

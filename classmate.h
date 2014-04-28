@@ -22,7 +22,7 @@ const string DEFAULT_NAME = "Bob";
 const short MAX_IQ = 70;
 const short MIN_IQ = 50;
 const short NUM_MOVE_DIRECTIONS = 4;
-
+const short POCKET_SIZE = 10;
 
 /*---------- Struct Declarations ----------*/
 
@@ -91,7 +91,7 @@ class classmate
     
     classmate(const string name = DEFAULT_NAME);
     
-    void place();
+    void go_to_school(school_yard & my_schoolyard);
     
     bool set_IQ(const short IQ);
     
@@ -106,6 +106,7 @@ class classmate
     string m_name;  //The name of the classmate
     point m_position;  //the position of the classmate on the schoolyard
     short m_IQ;  //the intelligence quotient of the classmate
+    trash pocket[POCKET_SIZE];  //the size of the classmate's pocket
     
 };
 
