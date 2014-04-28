@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
-//Programmer: Caleb Olson               Date: 4-19-14
-//File: classmate.h                     Class: CS53 Section B
+//Programmer: Caleb Olson and Sawyer McLane  Date: 4-28-14
+//File: classmate.h                          Class: CS53 Section B
 //Purpose: Header file for the classmate class.
 //-----------------------------------------------------------------------------
 
