@@ -52,6 +52,16 @@ const char EMPTY_SPACE = ' ';  //a position with nothing in it.
 //Pre: the schoolyard() constructor has been called for the calling object
 //Post: a correctly formatted schoolyard is printed to the screen.
 
+//get_trash_count():
+//returns the amount of trash currently in the schoolyard
+//Pre: The schoolyard has been built and contains trash
+//Post: The number of pieces of trash is returned.
+
+//get_cell(const short x, const short y):
+//returns the character value of the specified cell in m_school_size
+//pre: x and y are between 0 and MAX_SCHOOLYARD_SIZE
+//post: returns the char value in the cell
+
 //build_school():
 //fills the schoolyard with empty space and then adds a school, a door, and
 //trash
@@ -77,15 +87,16 @@ class schoolyard
     friend ostream & operator << (ostream & os, const schoolyard 
                                   & my_yard);
     
-    int get_trash_count()const;
+    short get_trash_count()const;
     
+    char get_cell(const short x, const short y)const;
   private:
     
     //represents the schoolyard as a 2D array of chars
     char m_schoolyard_map[MAX_SCHOOLYARD_SIZE][MAX_SCHOOLYARD_SIZE];
     short m_yard_size;  //The size of the schoolyard in one direction
     short m_school_size;  //size of the school in one direction
-    int m_trash_count; //How much trash is in the yard
+    short m_trash_count; //How much trash is in the yard
     
     void build_school();
     

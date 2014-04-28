@@ -49,7 +49,7 @@ short schoolyard::get_school_size()const
 void schoolyard::build_school()
 {
   //number of pieces of trash that should be placed in the schoolyard
-  int m_trash_count = ((m_yard_size * m_yard_size) - 
+  short m_trash_count = ((m_yard_size * m_yard_size) - 
                          (m_school_size * m_school_size)) * 
                          (static_cast<float>(PERCENT_TRASH) / 100);
   
@@ -89,9 +89,14 @@ void schoolyard::build_school()
   return;
 }
 
-int schoolyard::get_trash_count()const
+short schoolyard::get_trash_count()const
 {
   return m_trash_count;
+}
+
+char schoolyard::get_cell(const short x, const short y)const
+{
+  return m_schoolyard_map[x][y];
 }
 /*----- Friend Functions -----*/
 
