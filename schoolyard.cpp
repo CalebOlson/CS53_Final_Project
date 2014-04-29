@@ -31,6 +31,9 @@ schoolyard::schoolyard(const short yard_size, const short school_size)
   m_school_size = school_size;
   
   build_school();
+  
+  //Place hoover in a random place in the building.
+  set_cell(HOOVER, rand()%m_school_size-1, rand()%m_school_size-1);
 }
 
 
@@ -131,6 +134,6 @@ ostream & operator << (ostream & os, const schoolyard & my_yard)
   for(int i = 0; i < my_yard.m_yard_size+2; i++)
     os << "*";
   
-  os << "\n\nKEY: \nS = School \nD = Door \nT = Trash";
+  os << "\n\nKEY: \nS = School \nD = Door \nT = Trash \nH = Hoover";
   return os;
 }
