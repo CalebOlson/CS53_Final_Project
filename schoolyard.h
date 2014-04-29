@@ -25,6 +25,7 @@ const char SCHOOL = 'S';  //a position with part of the school in it
 const char DOOR = 'D';  //a position with the door in it
 const char TRASH = 'T';  //a position with trash in it
 const char EMPTY_SPACE = ' ';  //a position with nothing in it.
+const char HOOVER = 'H'; //a position containing the teacher.
 
 
 /*---------- Class Function Comments ----------*/
@@ -65,7 +66,8 @@ const char EMPTY_SPACE = ' ';  //a position with nothing in it.
 //set_cell(const char c, const short x, const short y):
 //changes the specified cell in m_schoolyard_map to the desired char 
 //pre: x and y are between 0 and MAX_SCHOOLYARD_SIZE
-//post: the char value at x,y in the map will be changed to c.
+//post: the char value at x,y in the map will be changed to c, and
+//returns true if this operation was successful
 
 //build_school():
 //fills the schoolyard with empty space and then adds a school, a door, and
