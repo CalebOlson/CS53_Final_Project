@@ -24,6 +24,10 @@ const short MIN_IQ = 50;
 const short NUM_MOVE_DIRECTIONS = 4;
 const short POCKET_SIZE = 10;
 
+/*---------- Forward Declarations ----------*/
+
+class schoolyard; //Allows passage of a Schoolyard class in the program. 
+
 /*---------- Struct Declarations ----------*/
 
 //Represents a point in the array. Holds an x and y value for horizontal and
@@ -51,6 +55,11 @@ struct Trash
 //defaults to DEFAULT_NAME and calls the place() function for the classmate
 //Pre: none
 //Post: The calling object has a value for m_name, m_position, and m_IQ
+
+//go_to_school(): 
+//gives the calling classmate a location on the yard
+//Pre: the yard has been initialized 
+//Post: m _position represents a random point on the yard
 
 //place():
 //gives the calling object a location value on the array
@@ -88,10 +97,10 @@ struct Trash
 class classmate
 {
   public:
+    //Not sure how to default a yard, so it needs to be passed.
+    classmate(schoolyard yard, const string name = DEFAULT_NAME);
     
-    classmate(const string name = DEFAULT_NAME);
-    
-    void go_to_school(/*schoolyard & my_schoolyard*/);
+    void go_to_school(schoolyard & my_schoolyard);
     
     bool set_IQ(const short IQ);
     

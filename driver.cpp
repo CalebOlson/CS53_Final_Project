@@ -41,9 +41,9 @@ int main()
   cout << "\n" << endl;
   
   //creates a classmate object
-  classmate ralph(CLASSMATE_NAME);
+  classmate ralph(my_school, CLASSMATE_NAME);
   //tests the default in the classmate constructor
-  classmate bob;
+  classmate bob(my_school);
   
   //prints out the classmate objects
   cout << ralph << endl;
@@ -52,7 +52,7 @@ int main()
   cout << "\n" << endl;
   
   //tests the place() function
-  ralph.go_to_school();
+  ralph.go_to_school(my_school);
   cout << ralph << endl;
   
   cout << "\n" << endl;
