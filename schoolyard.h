@@ -8,8 +8,11 @@
 #define SCHOOLYARD_H
 
 #include<iostream>
+#include<string>
+#include<cstdlib>
+#include<ctime>
 
-#include"classmate.h"
+class classmate;
 
 using namespace std;
 
@@ -19,7 +22,7 @@ using namespace std;
 const short MAX_SCHOOLYARD_SIZE = 25;
 
 //Percent of empty spaces filled with trash
-const int PERCENT_TRASH = 10;
+const int PERCENT_TRASH = 5;
 
 const char SCHOOL = 'S';  //a position with part of the school in it
 const char DOOR = 'D';  //a position with the door in it

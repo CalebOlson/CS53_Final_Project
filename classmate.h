@@ -116,6 +116,10 @@ class classmate
     point m_position;  //the position of the classmate on the schoolyard
     short m_IQ;  //the intelligence quotient of the classmate
     Trash pocket[POCKET_SIZE];  //the size of the classmate's pocket
+    int m_grade;  //The classmate's grade for its assignment
+    
+    //True if the classmate is currently
+    bool m_moving;
     
 };
 
