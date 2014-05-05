@@ -134,6 +134,6 @@ ostream & operator << (ostream & os, const schoolyard & my_yard)
   for(int i = 0; i < my_yard.m_yard_size+2; i++)
     os << "*";
   
-  os << "\n\nKEY: \nS = School \nD = Door \nT = Trash \nH = Hoover";
+  os << "\n\nKEY: \nS = School \nD = Door \nT = Trash \nH = Hoover \nC = Classmate";
   return os;
 }

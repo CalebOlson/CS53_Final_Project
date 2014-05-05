@@ -12,7 +12,7 @@ using namespace std;
 
 /*----- Member Functions -----*/
 
-classmate::classmate(schoolyard yard, const string name)
+classmate::classmate(schoolyard & yard, const string name)
 {
   //assign a name to this classmate
   m_name = name;
@@ -26,8 +26,30 @@ classmate::classmate(schoolyard yard, const string name)
   
 void classmate::go_to_school(schoolyard & my_schoolyard)
 {
-  m_position.m_val_X = rand()%(MAX_SCHOOLYARD_SIZE);
-  m_position.m_val_Y = rand()%(MAX_SCHOOLYARD_SIZE);
+  /* 
+    The flow of this function should be as follows:
+      1. Generates a random x and y value that is inside the schoolyard
+      but outside the building.
+      2. If the position is not occupied (i.e blank), insert the classmate.
+      Else, regenerate a spot.
+      
+  */
+  short myX, myY;
+  bool done = false; 
+  while(!done)
+  {
+    myX = my_schoolyard.get_school_size() + (rand()%(my_schoolyard.get_yard_size() - 
+      my_schoolyard.get_school_size()));
+    myY = my_schoolyard.get_school_size() + (rand()%(my_schoolyard.get_yard_size() - 
+      my_schoolyard.get_school_size()));
+    if(my_schoolyard.get_cell(myX, myY) == EMPTY_SPACE)
+    {
+      my_schoolyard.set_cell(CLASSMATE, myX, myY);
+      m_position.m_val_X = myX;
+      m_position.m_val_Y = myY;
+      done = true;
+    }
+  }
   return;
 }
 

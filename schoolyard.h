@@ -26,7 +26,7 @@ const char DOOR = 'D';  //a position with the door in it
 const char TRASH = 'T';  //a position with trash in it
 const char EMPTY_SPACE = ' ';  //a position with nothing in it.
 const char HOOVER = 'H'; //a position containing the teacher.
-
+const char CLASSMATE = 'C'; //a position containing a schoolmate.
 
 /*---------- Class Function Comments ----------*/
 

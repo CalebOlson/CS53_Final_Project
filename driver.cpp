@@ -74,5 +74,7 @@ int main()
     ralph.move();
     cout << ralph << endl;
   }
+  
+  cout << my_school << endl;
   return 0;
 }
