@@ -37,8 +37,8 @@ int main()
   schoolyard my_schoolyard(SCHOOLYARD_SIZE, SCHOOL_SIZE);
   
   //create the two classmates
-  classmate classmate1(my_schoolyard, CLASSMATE1_NAME);
-  classmate classmate2(my_schoolyard, CLASSMATE2_NAME);
+  classmate classmate1(CLASSMATE1_NAME);
+  classmate classmate2(CLASSMATE2_NAME);
   
   //place the students in the schoolyard
   classmate1.go_to_school(my_schoolyard);

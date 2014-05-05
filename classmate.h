@@ -97,8 +97,8 @@ struct Trash
 class classmate
 {
   public:
-    //Not sure how to default a yard, so it needs to be passed.
-    classmate(schoolyard & yard, const string name = DEFAULT_NAME);
+    
+    classmate(const string name = DEFAULT_NAME);
     
     void go_to_school(schoolyard & my_schoolyard);
     

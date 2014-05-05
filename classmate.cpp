@@ -12,15 +12,13 @@ using namespace std;
 
 /*----- Member Functions -----*/
 
-classmate::classmate(schoolyard & yard, const string name)
+classmate::classmate(const string name)
 {
   //assign a name to this classmate
   m_name = name;
   
   //assign an IQ to this classmate
   set_IQ(rand()%(MAX_IQ - MIN_IQ + 1) + MIN_IQ);
-  
-  go_to_school(yard);
 }
 
   
