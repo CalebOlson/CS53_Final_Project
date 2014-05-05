@@ -11,6 +11,7 @@
 #include<string>
 #include<cstdlib>
 #include<ctime>
+#include<fstream>
 
 #include"schoolyard.h"
 
@@ -18,6 +19,7 @@ using namespace std;
 
 /*---------- Constant Declarations ----------*/
 
+const string TRASH_DATA_FILE = "trash.dat";
 const string DEFAULT_NAME = "Bob";
 const short MAX_IQ = 70;
 const short MIN_IQ = 50;
@@ -45,6 +47,16 @@ struct Trash
 {
   string m_name;  //The trash's name
   int m_value;   //The value of the trash when used in a project
+  
+  //constructor that assigns the trash object a certain type of trash chosen
+  //randomly from a file.
+  //Pre: there must be a fine in the parent directory of classmate.h that
+  //contains values and names for trash objects. 
+  //The first line in the file should have the number of types of trash in the
+  //file.
+  //Post: m_name and m_value have been assigned the values from a type of trash
+  //in the data file.
+  Trash();
 };
 
 
@@ -106,7 +118,7 @@ class classmate
     
     short get_IQ()const;
     
-    void move();
+    void move(schoolyard & my_schoolyard);
     
     friend ostream & operator << (ostream & os, const classmate & kid);
     

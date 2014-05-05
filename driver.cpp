@@ -49,8 +49,8 @@ int main()
   
   while(!classmate1_finished && !classmate2_finished && num_moves < 100)
   {
-    classmate1.move();
-    classmate2.move();
+    classmate1.move(my_schoolyard);
+    classmate2.move(my_schoolyard);
     
     cout << my_schoolyard << endl;
     
@@ -58,6 +58,7 @@ int main()
   }
   
   cout << "The winner is " << endl;
+  
   
   return 0;
 }

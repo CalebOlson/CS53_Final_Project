@@ -71,7 +71,7 @@ short classmate::get_IQ()const
 }
 
 
-void classmate::move()
+void classmate::move(schoolyard & my_schoolyard)
 {
   //true if the move will not take the classmate outside the array
   bool valid_move= false;
@@ -112,4 +112,34 @@ ostream & operator << (ostream & os, const classmate & kid)
   os << kid.m_name << " has iq " << kid.m_IQ << " and is at ("
      << kid.m_position.m_val_X << ", " << kid.m_position.m_val_Y << ").";
   return os;
+}
+
+
+/*----- Struct Function Definitions -----*/
+
+Trash::Trash()
+{
+  int num_types_trash;  //number of different types of trash
+  int type_trash;  //The position in the file of the chosen type of trash
+  
+  ifstream fin;  //creates a new file input stream
+  
+  fin.open(TRASH_DATA_FILE.c_str());  //opens the trash data file
+  
+  //gets the number of types of trash
+  fin >> num_types_trash;
+  
+  //randomly chooses a position of a type of trash in the file
+  type_trash = rand()%(num_types_trash-1)+1;
+  
+  fin.ignore(5, '\n');
+  
+  for(int i = 0; i < type_trash; i++)
+  {
+    fin >> m_value;
+    
+    fin.ignore(1, ' ');
+    
+    getline(fin, m_name);
+  }
 }
