@@ -36,10 +36,13 @@ void classmate::go_to_school(schoolyard & my_schoolyard)
   bool done = false; 
   while(!done)
   {
-    myX = my_schoolyard.get_school_size() + (rand()%(my_schoolyard.get_yard_size() - 
-      my_schoolyard.get_school_size()));
-    myY = my_schoolyard.get_school_size() + (rand()%(my_schoolyard.get_yard_size() - 
-      my_schoolyard.get_school_size()));
+    myX = my_schoolyard.get_school_size() + 
+          (rand()%(my_schoolyard.get_yard_size() - 
+          my_schoolyard.get_school_size()));
+    myY = my_schoolyard.get_school_size() + 
+          (rand()%(my_schoolyard.get_yard_size() - 
+          my_schoolyard.get_school_size()));
+          
     if(my_schoolyard.get_cell(myX, myY) == EMPTY_SPACE)
     {
       my_schoolyard.set_cell(CLASSMATE, myX, myY);
