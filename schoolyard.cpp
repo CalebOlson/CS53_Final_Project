@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
-//Programmer: Caleb Olson and Sawyer McLane  Date: 4-28-14
+//Programmer: Caleb Olson and Sawyer McLane  Date: 5-05-14
 //File: schoolyard.cpp                       Class: CS53 Section B
-//Purpose: Function definitions for the schoolyard class.
+//Purpose: Function definitions for the schoolyard class. 
 //-----------------------------------------------------------------------------
 
 #include"schoolyard.h"

@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
-//Programmer: Caleb Olson and Sawyer McLane  Date: 4-28-14
+//Programmer: Caleb Olson and Sawyer McLane  Date: 5-05-14
 //File: classmate.cpp                        Class: CS53 Section B
-//Purpose: Define functions for use with the classmate class.
+//Purpose: Define functions for use with the classmate class. 
 //-----------------------------------------------------------------------------
 
 #include"classmate.h"
