@@ -11,70 +11,53 @@ using namespace std;
 
 /*---------- Constant Declarations ----------*/
 
-const int NUM_STEPS = 5;
-const int SCHOOLYARD_SIZE = 13;
-const int SCHOOL_SIZE = 9;
-const int IQ = 60;
-const string CLASSMATE_NAME = "Ralph";
+const int SCHOOLYARD_SIZE = 20;
+const int SCHOOL_SIZE = 5;
+const string CLASSMATE1_NAME = "Ralph";
+const string CLASSMATE2_NAME = "A Possum";
 
 
 /*---------- Main Function ----------*/
 
 int main()
 {
-  srand(time(NULL));
+  /*----- Variable Declarations -----*/
   
-  cout << "Testing all functions now!\n\n" << endl;
+  int num_moves = 0;  //number of moves the simulation has been running
+  
+  //true if the respective classmate has turned in its project
+  bool classmate1_finished = false, classmate2_finished = false;
+  
+  
+  /*----- Program Execution -----*/
+  
+  srand(time(NULL));  //seeds the random number generator
   
   //creates a schoolyard object
-  schoolyard my_school(SCHOOLYARD_SIZE, SCHOOL_SIZE);
+  schoolyard my_schoolyard(SCHOOLYARD_SIZE, SCHOOL_SIZE);
   
-  //prints the schoolyard object
-  cout << my_school << endl;
+  //create the two classmates
+  classmate classmate1(my_schoolyard, CLASSMATE1_NAME);
+  classmate classmate2(my_schoolyard, CLASSMATE2_NAME);
   
-  cout << "\n" << endl;
+  //place the students in the schoolyard
+  classmate1.go_to_school(my_schoolyard);
+  classmate2.go_to_school(my_schoolyard);
   
-  //prints info about the schoolyard object
-  cout << "School Size: " << my_school.get_school_size() << endl;
-  cout << "Schoolyard Size: " << my_school.get_yard_size() << endl;
+  //print out the schoolyard
+  cout << my_schoolyard << endl;
   
-  cout << "\n" << endl;
-  
-  //creates a classmate object
-  classmate ralph(my_school, CLASSMATE_NAME);
-  //tests the default in the classmate constructor
-  classmate bob(my_school);
-  
-  //prints out the classmate objects
-  cout << ralph << endl;
-  cout << bob << endl;
-  
-  cout << "\n" << endl;
-  
-  //tests the place() function
-  ralph.go_to_school(my_school);
-  cout << ralph << endl;
-  
-  cout << "\n" << endl;
-  
-  //tests the set_IQ() function
-  ralph.set_IQ(IQ);
-  cout << ralph << endl;
-  
-  cout << "\n" << endl;
-  
-  //tests the get_IQ() function
-  cout << "Ralph's IQ: " << ralph.get_IQ() << endl;
-  
-  cout << "\n" << endl;
-  
-  //tests the move() function
-  for(int i = 0; i < NUM_STEPS; i++)
+  while(!classmate1_finished && !classmate2_finished && num_moves < 100)
   {
-    ralph.move();
-    cout << ralph << endl;
+    classmate1.move();
+    classmate2.move();
+    
+    cout << my_schoolyard << endl;
+    
+    num_moves++;
   }
   
-  cout << my_school << endl;
+  cout << "The winner is " << endl;
+  
   return 0;
 }
