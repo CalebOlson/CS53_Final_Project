@@ -82,7 +82,9 @@ bool classmate::valid_move(const schoolyard & my_schoolyard, const point &
                            my_point)const
 {
   bool is_valid = false;
-  
+  if(my_point.m_val_X < my_schoolyard.get_yard_size() && my_point.m_val_X 
+    < my_schoolyard.get_yard_size())
+    is_valid = true;
   
   
   return is_valid;
