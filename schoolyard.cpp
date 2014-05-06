@@ -78,10 +78,6 @@ bool schoolyard::set_cell(const char cell_value, const short x_val, const short
   if(x_val >= 0 && x_val < MAX_SCHOOLYARD_SIZE && y_val >= 0 && y_val <
   MAX_SCHOOLYARD_SIZE)
   {
-    if(m_schoolyard_map[x_val][y_val] == TRASH && cell_value != TRASH)
-    {
-      m_trash_count--;
-    }
     m_schoolyard_map[x_val][y_val] = cell_value;
     isSet = true;
   }
