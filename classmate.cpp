@@ -137,6 +137,14 @@ void classmate::rand_move(schoolyard & my_schoolyard)
       }
     }
   }
+  else
+  {
+    if(m_position.m_val_X != 0 && m_position.m_val_Y != 0)
+    {
+      m_position.m_val_X--;
+      m_position.m_val_Y--;
+    } 
+  }
  
   m_space_type = my_schoolyard.get_cell(m_position.m_val_X, 
                                         m_position.m_val_Y);

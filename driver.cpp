@@ -70,9 +70,9 @@ int main()
   */
   
   if(classmate1.get_score() > classmate2.get_score())
-    cout << classmate1;
+    cout << classmate1 << " with " << classmate1.get_score() << " points.";
   else
-    cout << classmate2;
+    cout << classmate2 << " with " << classmate2.get_score() << " points.";
   cout << "It took " << num_moves << " to win!" << endl;
   cout << "Goodbye!" << endl;
   return 0;
