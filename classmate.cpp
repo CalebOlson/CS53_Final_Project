@@ -51,6 +51,8 @@ void classmate::go_to_school(schoolyard & my_schoolyard)
       done = true;
     }
   }
+  
+  m_position.m_space_type = EMPTY_SPACE;
   return;
 }
 
@@ -79,6 +81,9 @@ void classmate::move(schoolyard & my_schoolyard)
   //true if the move will not take the classmate outside the array
   bool valid_move= false;
   
+  my_schoolyard.set_cell(m_position.m_space_type, m_position.m_val_X, 
+                         m_position.m_val_Y);
+  
   while(!valid_move)  //ensures move is valid before making it
   {
     short move_direction = rand()%(NUM_MOVE_DIRECTIONS + 1);
@@ -104,6 +109,11 @@ void classmate::move(schoolyard & my_schoolyard)
       valid_move = true;
     }
   }
+  
+  m_position.m_space_type = my_schoolyard.get_cell(m_position.m_val_X, 
+                                                  m_position.m_val_Y);
+  
+  my_schoolyard.set_cell(CLASSMATE, m_position.m_val_X, m_position.m_val_Y);
   return;
 }
 

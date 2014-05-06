@@ -47,7 +47,7 @@ int main()
   //print out the schoolyard
   cout << my_schoolyard << endl;
   
-  while(!classmate1_finished && !classmate2_finished && num_moves < 100)
+  while(!classmate1_finished && !classmate2_finished && num_moves < 10)
   {
     classmate1.move(my_schoolyard);
     classmate2.move(my_schoolyard);

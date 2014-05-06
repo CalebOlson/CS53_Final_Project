@@ -33,11 +33,14 @@ class schoolyard; //Allows passage of a Schoolyard class in the program.
 /*---------- Struct Declarations ----------*/
 
 //Represents a point in the array. Holds an x and y value for horizontal and
-//vertical position, respectively.
+//vertical position, respectively, along with the type of space the point is.
 struct point
 {
   short m_val_X;  //the x position of the point
   short m_val_Y;  //the y position of the point
+  
+  //the type of space this point is (trash, door, empty space, ect.)
+  char m_space_type;
 };
 
 
@@ -71,12 +74,13 @@ struct Trash
 //go_to_school(): 
 //gives the calling classmate a location on the yard
 //Pre: the yard has been initialized 
-//Post: m _position represents a random point on the yard
+//Post: m_position represents a random point on the yard
 
-//place():
+//go_to_school():
 //gives the calling object a location value on the array
 //Pre: the classmate() constructor has been called for the calling object
-//Post: m_position represents a random point on the array
+//Post: m_position represents a random point on the array, m_space_type has
+//the value of EMPTY_SPACE.
 
 //set_IQ():
 //sets the IQ of the calling object
