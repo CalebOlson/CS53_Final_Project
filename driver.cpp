@@ -45,6 +45,9 @@ int main()
   classmate2.go_to_school(my_schoolyard);
   
   //print out the schoolyard
+    
+  cout << "\n\nKEY: \nS = School \nD = Door \nT = Trash \nH = Hoover \nC = "
+     << "Classmate" << endl << endl;
   cout << my_schoolyard << endl;
   
   //Keeps moving while both are not finished and the num moves is less than 10
