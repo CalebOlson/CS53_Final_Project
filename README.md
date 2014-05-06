@@ -7,3 +7,7 @@ TODO:
 *   Create "smart" movement function.
 *   Implement way for classmates to pick up trash and keep track of trash.
 *   Finish this todo page.  
+
+
+BUGS:
+*   Sometimes Hoover doesn't appear to get placed.

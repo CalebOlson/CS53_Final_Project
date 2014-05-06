@@ -47,18 +47,28 @@ int main()
   //print out the schoolyard
   cout << my_schoolyard << endl;
   
+  //Keeps moving while both are not finished and the num moves is less than 10
+  //the num moves is a placeholder to prevent infinite looping
   while(!classmate1_finished && !classmate2_finished && num_moves < 10)
   {
     classmate1.move(my_schoolyard);
     classmate2.move(my_schoolyard);
-    
-    cout << my_schoolyard << endl;
-    
+    if(num_moves < 10)
+      cout << my_schoolyard << endl;
     num_moves++;
   }
+  //Eventually will cout the winner
+  cout << "The winner is ";
   
-  cout << "The winner is " << endl;
+  /* Sudo Code:
   
-  
+  if(c1.isWinner)
+    cout c1
+  else
+    cout c2
+    
+  */
+  cout << "It took " << num_moves << " to win!" << endl;
+  cout << "Goodbye!" << endl;
   return 0;
 }
