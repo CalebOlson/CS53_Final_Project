@@ -58,6 +58,14 @@ short schoolyard::get_trash_count()const
   return m_trash_count;
 }
 
+
+void schoolyard::pick_up_trash()
+{
+  m_trash_count--;
+  return;
+}
+
+
 char schoolyard::get_cell(const short x_val, const short y_val)const
 {
   return m_schoolyard_map[x_val][y_val];

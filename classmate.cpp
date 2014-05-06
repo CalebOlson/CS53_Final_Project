@@ -131,14 +131,9 @@ void classmate::rand_move(schoolyard & my_schoolyard)
       }
     }
   }
-  
-  if(my_schoolyard.get_cell(m_position.m_val_X, m_position.m_val_Y) != TRASH)
-  {
-    m_space_type = my_schoolyard.get_cell(m_position.m_val_X, 
-                                          m_position.m_val_Y);
-  }
-  else
-    m_space_type = EMPTY_SPACE;
+ 
+  m_space_type = my_schoolyard.get_cell(m_position.m_val_X, 
+                                        m_position.m_val_Y);
   
   my_schoolyard.set_cell(CLASSMATE, m_position.m_val_X, m_position.m_val_Y);
   return;
@@ -161,6 +156,7 @@ bool classmate::get_trash(schoolyard & my_schoolyard, const int x, const int y)
       Trash t;
       m_pocket[m_num_trash] = t;
       m_num_trash++;
+      my_schoolyard.pick_up_trash();
       my_schoolyard.set_cell(EMPTY_SPACE, x, y);
       found = true;
       cout << m_name << " got " << t.m_name << "!" 

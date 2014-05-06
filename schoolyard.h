@@ -62,6 +62,11 @@ const char CLASSMATE = 'C'; //a position containing a schoolmate.
 //Pre: The schoolyard has been built and contains trash
 //Post: The number of pieces of trash is returned.
 
+//pick_up_trash();
+//reduces the trash count by 1
+//Pre: m_trash_count must be initialized and greater than 0
+//Post: m_trash_count is decremented by 1.
+
 //get_cell(const short x, const short y):
 //returns the character value of the specified cell in m_school_size
 //pre: x and y are between 0 and MAX_SCHOOLYARD_SIZE
@@ -96,6 +101,8 @@ class schoolyard
     short get_school_size()const;
     
     short get_trash_count()const;
+    
+    void pick_up_trash();
     
     char get_cell(const short x_val, const short y_val)const;
     

@@ -100,11 +100,11 @@ struct Trash
 //smart_move():
 //moves the calling object towards a trash object
 //Pre: the classmate constructor has been called for the calling object
-//Post: m_position of the calling object has been shifted to an ajacent trash
+//Post: m_position of the calling object has been shifted to an adjacent trash
 //object.
 
 //get_trash():
-//grabs trash from an ajacent cell
+//grabs trash from an adjacent cell
 //Pre: The x and y coordinates passed are valid
 //Post: Trash has been added to the classmate's pocket, and the cell is cleared.
 

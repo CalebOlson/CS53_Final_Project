@@ -25,9 +25,6 @@ int main()
   
   int num_moves = 0;  //number of moves the simulation has been running
   
-  //true if the respective classmate has turned in its project
-  bool classmate1_finished = false, classmate2_finished = false;
-  
   
   /*----- Program Execution -----*/
   
