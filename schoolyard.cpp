@@ -30,6 +30,10 @@ schoolyard::schoolyard(const short yard_size, const short school_size)
   m_yard_size = yard_size;
   m_school_size = school_size;
   
+  m_trash_count = ((m_yard_size * m_yard_size) - 
+                   (m_school_size * m_school_size)) * 
+                   (static_cast<float>(PERCENT_TRASH) / 100);
+  
   build_school();
   
   //Place hoover in a random place in the building.
@@ -49,12 +53,34 @@ short schoolyard::get_school_size()const
 }
 
 
+short schoolyard::get_trash_count()const
+{
+  return m_trash_count;
+}
+
+char schoolyard::get_cell(const short x_val, const short y_val)const
+{
+  return m_schoolyard_map[x_val][y_val];
+}
+
+bool schoolyard::set_cell(const char cell_value, const short x_val, const short
+                          y_val)
+{
+  bool isSet = false;
+  if(x_val >= 0 && x_val < MAX_SCHOOLYARD_SIZE && y_val >= 0 && y_val <
+  MAX_SCHOOLYARD_SIZE)
+  {
+    m_schoolyard_map[x_val][y_val] = cell_value;
+    isSet = true;
+  }
+  return isSet;
+}
+
+
 void schoolyard::build_school()
 {
   //number of pieces of trash that should be placed in the schoolyard
-  short m_trash_count = ((m_yard_size * m_yard_size) - 
-                         (m_school_size * m_school_size)) * 
-                         (static_cast<float>(PERCENT_TRASH) / 100);
+  short trash_count = get_trash_count();
   
   //stores the x and y coordinates of the piece of trash
   int trash_X, trash_Y;
@@ -77,7 +103,7 @@ void schoolyard::build_school()
   }
   
   //places the trash
-  while(m_trash_count > 0)
+  while(trash_count > 0)
   {
     trash_X = rand()%(m_yard_size);
     trash_Y = rand()%(m_yard_size);
@@ -85,32 +111,11 @@ void schoolyard::build_school()
     if(m_schoolyard_map[trash_X][trash_Y] == ' ')
     {
       m_schoolyard_map[trash_X][trash_Y] = TRASH;
-      m_trash_count--;
+      trash_count--;
     }
   }
   
   return;
-}
-
-short schoolyard::get_trash_count()const
-{
-  return m_trash_count;
-}
-
-char schoolyard::get_cell(const short x, const short y)const
-{
-  return m_schoolyard_map[x][y];
-}
-
-bool schoolyard::set_cell(const char c, const short x, const short y)
-{
-  bool isSet = false;
-  if(x >= 0 && x < MAX_SCHOOLYARD_SIZE && y >= 0 && y < MAX_SCHOOLYARD_SIZE)
-  {
-    m_schoolyard_map[x][y] = c;
-    isSet = true;
-  }
-  return isSet;
 }
 /*----- Friend Functions -----*/
 

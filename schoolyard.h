@@ -12,6 +12,7 @@
 #include<cstdlib>
 #include<ctime>
 
+
 class classmate;
 
 using namespace std;
@@ -94,14 +95,15 @@ class schoolyard
     
     short get_school_size()const;
     
+    short get_trash_count()const;
+    
+    char get_cell(const short x_val, const short y_val)const;
+    
+    bool set_cell(const char cell_value, const short x_val, const short y_val);
+    
     friend ostream & operator << (ostream & os, const schoolyard 
                                   & my_yard);
     
-    short get_trash_count()const;
-    
-    char get_cell(const short x, const short y)const;
-    
-    bool set_cell(const char c, const short x, const short y);
   private:
     
     //represents the schoolyard as a 2D array of chars

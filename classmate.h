@@ -33,14 +33,11 @@ class schoolyard; //Allows passage of a Schoolyard class in the program.
 /*---------- Struct Declarations ----------*/
 
 //Represents a point in the array. Holds an x and y value for horizontal and
-//vertical position, respectively, along with the type of space the point is.
+//vertical position, respectively.
 struct point
 {
   short m_val_X;  //the x position of the point
   short m_val_Y;  //the y position of the point
-  
-  //the type of space this point is (trash, door, empty space, ect.)
-  char m_space_type;
 };
 
 
@@ -122,6 +119,9 @@ class classmate
     
     short get_IQ()const;
     
+    bool valid_move(const schoolyard & my_schoolyard, const point & my_point
+                    )const;
+    
     void move(schoolyard & my_schoolyard);
     
     friend ostream & operator << (ostream & os, const classmate & kid);
@@ -129,13 +129,17 @@ class classmate
   private:
     
     string m_name;  //The name of the classmate
-    point m_position;  //the position of the classmate on the schoolyard
     short m_IQ;  //the intelligence quotient of the classmate
-    Trash pocket[POCKET_SIZE];  //the size of the classmate's pocket
-    int m_grade;  //The classmate's grade for its assignment
     
-    //True if the classmate is currently
-    bool m_moving;
+    point m_position;  //the position of the classmate on the schoolyard
+    //the type of space the character is on (trash, door, empty space, ect.)
+    char m_space_type;
+    
+    Trash m_pocket[POCKET_SIZE];  //the size of the classmate's pocket
+    int m_num_trash;  //number of pieces of trash in the classmate's pocket
+    
+    bool m_graded;  //True if the classmate's project has been graded
+    int m_grade;  //The classmate's grade for its assignment
     
 };
 
