@@ -91,7 +91,7 @@ bool classmate::valid_move(const schoolyard & my_schoolyard, const point &
 }
 
 
-void classmate::move(schoolyard & my_schoolyard)
+void classmate::rand_move(schoolyard & my_schoolyard)
 {
   //true if the move will not take the classmate outside the array
   bool valid_move= false;
@@ -107,21 +107,25 @@ void classmate::move(schoolyard & my_schoolyard)
     
       if(move_direction == 1 && m_position.m_val_X > 0)
       {
+        get_trash(my_schoolyard, m_position.m_val_X-1, m_position.m_val_Y);
         m_position.m_val_X--;
         valid_move = true;
       }
       else if(move_direction == 2 && m_position.m_val_Y > 0)
       {
+        get_trash(my_schoolyard,m_position.m_val_X, m_position.m_val_Y-1);
         m_position.m_val_Y--;
         valid_move = true;
       }
-      else if(move_direction == 3 && m_position.m_val_X < MAX_SCHOOLYARD_SIZE-1)
+      else if(move_direction == 3 && m_position.m_val_X <MAX_SCHOOLYARD_SIZE-1)
       {
+        get_trash(my_schoolyard,m_position.m_val_X+1, m_position.m_val_Y);
         m_position.m_val_X++;
         valid_move = true;
       }
-      else if(move_direction == 4 && m_position.m_val_Y < MAX_SCHOOLYARD_SIZE-1)
+      else if(move_direction == 4 && m_position.m_val_Y <MAX_SCHOOLYARD_SIZE-1)
       {
+        get_trash(my_schoolyard,m_position.m_val_X, m_position.m_val_Y+1);
         m_position.m_val_Y++;
         valid_move = true;
       }
@@ -140,6 +144,28 @@ void classmate::move(schoolyard & my_schoolyard)
   return;
 }
 
+void classmate::smart_move(schoolyard & my_schoolyard)
+{
+  if(true)
+    rand_move(my_schoolyard);
+  else
+    rand_move(my_schoolyard);
+  return;
+}
+
+bool classmate::get_trash(schoolyard & my_schoolyard, const int x, const int y)
+{
+  bool found = false;
+  if(my_schoolyard.get_cell(x,y) == TRASH)
+    {
+      Trash t;
+      m_pocket[m_num_trash] = t;
+      m_num_trash++;
+      my_schoolyard.set_cell(EMPTY_SPACE, x, y);
+      found = true;
+    }
+  return found;
+}
 
 /*----- Friend Functions -----*/
 

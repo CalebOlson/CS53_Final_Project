@@ -91,11 +91,17 @@ struct Trash
 //Pre: the classmate() constructor has been called for the calling object
 //Post: gets the calling object's IQ
 
-//move():
+//rand_move():
 //moves the calling object one space in a random direction
 //Pre: the classmate() constructor has been called for the calling object
 //Post: m_position of the calling object has been shifted one space in a random
 //direction without going outside the array
+
+//smart_move():
+//moves the calling object towards a trash object
+//Pre: the classmate constructor has been called for the calling object
+//Post: m_position of the calling object has been shifted to an ajacent trash
+//object.
 
 //operator <<():
 //Overloads the << operator to print out a classmate
@@ -122,7 +128,11 @@ class classmate
     bool valid_move(const schoolyard & my_schoolyard, const point & my_point
                     )const;
     
-    void move(schoolyard & my_schoolyard);
+    void rand_move(schoolyard & my_schoolyard);
+    
+    void smart_move(schoolyard & my_schoolyard);
+    
+    bool get_trash(schoolyard & my_schoolyard, const int x, const int y);
     
     friend ostream & operator << (ostream & os, const classmate & kid);
     

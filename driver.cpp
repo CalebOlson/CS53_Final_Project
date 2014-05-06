@@ -51,8 +51,8 @@ int main()
   //the num moves is a placeholder to prevent infinite looping
   while(!classmate1_finished && !classmate2_finished && num_moves < 10)
   {
-    classmate1.move(my_schoolyard);
-    classmate2.move(my_schoolyard);
+    classmate1.rand_move(my_schoolyard);
+    classmate2.rand_move(my_schoolyard);
     if(num_moves < 10)
       cout << my_schoolyard << endl;
     num_moves++;
