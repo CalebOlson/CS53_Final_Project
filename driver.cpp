@@ -68,6 +68,11 @@ int main()
     cout c2
     
   */
+  
+  if(classmate1.get_score() > classmate2.get_score())
+    cout << classmate1;
+  else
+    cout << classmate2;
   cout << "It took " << num_moves << " to win!" << endl;
   cout << "Goodbye!" << endl;
   return 0;

@@ -21,6 +21,8 @@ classmate::classmate(const string name)
   set_IQ(rand()%(MAX_IQ - MIN_IQ + 1) + MIN_IQ);
   
   m_num_trash = 0;  //sets the amount of trash in the classmate's pocket to 0.
+  
+  m_trash_value = 0;
 }
 
   
@@ -77,6 +79,10 @@ short classmate::get_IQ()const
   return m_IQ;
 }
 
+double classmate::get_score()const
+{
+  return static_cast <double> (m_trash_value) / m_IQ;
+}
 
 bool classmate::valid_move(const schoolyard & my_schoolyard, const point & 
                            my_point)const
@@ -159,6 +165,7 @@ bool classmate::get_trash(schoolyard & my_schoolyard, const int x, const int y)
       my_schoolyard.pick_up_trash();
       my_schoolyard.set_cell(EMPTY_SPACE, x, y);
       found = true;
+      m_trash_value += t.m_value;
       cout << m_name << " got " << t.m_name << "!" 
         << endl << endl;
     }
@@ -169,7 +176,7 @@ bool classmate::get_trash(schoolyard & my_schoolyard, const int x, const int y)
 
 ostream & operator << (ostream & os, const classmate & kid)
 {
-  os << kid.m_name << " has iq " << kid.m_IQ << " and is at ("
+  os << kid.m_name << ", who has iq " << kid.m_IQ << " and is at ("
      << kid.m_position.m_val_X << ", " << kid.m_position.m_val_Y << ").";
   return os;
 }

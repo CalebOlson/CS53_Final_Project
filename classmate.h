@@ -130,6 +130,8 @@ class classmate
     
     short get_IQ()const;
     
+    double get_score()const;
+    
     bool valid_move(const schoolyard & my_schoolyard, const point & my_point
                     )const;
     
@@ -151,10 +153,11 @@ class classmate
     char m_space_type;
     
     Trash m_pocket[POCKET_SIZE];  //the size of the classmate's pocket
-    int m_num_trash;  //number of pieces of trash in the classmate's pocket
+    short m_num_trash;  //number of pieces of trash in the classmate's pocket
+    short m_trash_value; //a running value of all the trash in the classmate's pocket
     
     bool m_graded;  //True if the classmate's project has been graded
-    int m_grade;  //The classmate's grade for its assignment
+    short m_grade;  //The classmate's grade for its assignment
     
 };
 
