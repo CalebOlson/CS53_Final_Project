@@ -9,6 +9,7 @@ TODO:
 
 BUGS:
 *   Sometimes Hoover doesn't appear to get placed.
+*   Classmates sometimes dissapear.
 
 STRETCH:
 *   Create "smart" movement function.

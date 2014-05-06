@@ -163,6 +163,8 @@ bool classmate::get_trash(schoolyard & my_schoolyard, const int x, const int y)
       m_num_trash++;
       my_schoolyard.set_cell(EMPTY_SPACE, x, y);
       found = true;
+      cout << m_name << " got " << t.m_name << "!" 
+        << endl << endl;
     }
   return found;
 }

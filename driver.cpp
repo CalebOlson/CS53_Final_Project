@@ -49,7 +49,7 @@ int main()
   
   //Keeps moving while both are not finished and the num moves is less than 10
   //the num moves is a placeholder to prevent infinite looping
-  while(!classmate1_finished && !classmate2_finished && num_moves < 10)
+  while(my_schoolyard.get_trash_count() != 0 && num_moves < 10)
   {
     classmate1.rand_move(my_schoolyard);
     classmate2.rand_move(my_schoolyard);

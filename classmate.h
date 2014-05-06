@@ -103,6 +103,11 @@ struct Trash
 //Post: m_position of the calling object has been shifted to an ajacent trash
 //object.
 
+//get_trash():
+//grabs trash from an ajacent cell
+//Pre: The x and y coordinates passed are valid
+//Post: Trash has been added to the classmate's pocket, and the cell is cleared.
+
 //operator <<():
 //Overloads the << operator to print out a classmate
 //Pre: the classmate() constructor has been called for the calling object
