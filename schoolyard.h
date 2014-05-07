@@ -126,7 +126,8 @@ class schoolyard
     short m_yard_size;  //The size of the schoolyard in one direction
     short m_school_size;  //size of the school in one direction
     short m_trash_count; //How much trash is in the yard
-    point m_teach_loc;
+    point m_teach_loc;  //the location of Hoover in the school
+    
     void build_school();
     
 };

@@ -41,7 +41,8 @@ schoolyard::schoolyard(const short yard_size, const short school_size)
   {
     m_teach_loc.m_val_X = rand()%m_school_size-1;
     m_teach_loc.m_val_Y = rand()%m_school_size-1;
-  }while((m_teach_loc.m_val_X == m_school_size-1) && (m_teach_loc.m_val_Y == m_school_size-1));
+  }while((m_teach_loc.m_val_X == m_school_size-1) && (m_teach_loc.m_val_Y == 
+          m_school_size-1));
   cout<<"TEACH: "<<m_teach_loc.m_val_X<<" "<<m_teach_loc.m_val_Y;
   set_cell(HOOVER, m_teach_loc.m_val_X, m_teach_loc.m_val_Y);
 }

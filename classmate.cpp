@@ -22,8 +22,6 @@ classmate::classmate(const string name)
   
   m_num_trash = 0;  //sets the amount of trash in the classmate's pocket to 0.
   
-  m_trash_value = 0;
-  
   m_graded = false;
 }
 
@@ -82,9 +80,25 @@ short classmate::get_IQ()const
 }
 
 
-double classmate::get_score()
+void classmate::grade_project(schoolyard & my_schoolyard)
 {
-  m_grade = static_cast <double> (m_trash_value) / m_IQ;
+  int total_trash_value = 0;  //total value of the trash in the pocket
+  for(int i = 0; i < POCKET_SIZE; i++)
+  {
+    total_trash_value = m_pocket[i].m_value;
+  }
+  
+  m_grade = (static_cast<double>(total_trash_value))/ m_IQ;
+  
+  my_schoolyard.set_cell(m_space_type, m_position.m_val_X, m_position.m_val_Y);
+  
+  m_graded = true;
+  return;
+}
+
+
+double classmate::get_grade()const
+{
   return m_grade;
 }
 
@@ -263,6 +277,18 @@ void classmate::move(schoolyard & my_schoolyard)
   else if(m_position.m_val_X > my_schoolyard.get_school_size()-1 ||
           m_position.m_val_Y > my_schoolyard.get_school_size()-1)
     move_to_door(my_schoolyard);
+  else if((my_schoolyard.get_teach().m_val_X == m_position.m_val_X) &&
+          (my_schoolyard.get_teach().m_val_Y == m_position.m_val_Y+1 ||
+           my_schoolyard.get_teach().m_val_Y == m_position.m_val_Y-1))
+  {
+    grade_project(my_schoolyard);
+  }
+  else if((my_schoolyard.get_teach().m_val_Y == m_position.m_val_Y) &&
+          (my_schoolyard.get_teach().m_val_X == m_position.m_val_X+1 ||
+           my_schoolyard.get_teach().m_val_X == m_position.m_val_X-1))
+  {
+    grade_project(my_schoolyard);
+  }
   else
     move_to_teacher(my_schoolyard);
   return;
@@ -271,25 +297,37 @@ void classmate::move(schoolyard & my_schoolyard)
 
 bool classmate::get_trash(schoolyard & my_schoolyard, const int x, const int y)
 {
-  bool found = false;
+  bool found = false;  //true if the target space contains trash
+  //true if the piece of trash is more valuable than another one in the pocket
+  bool more_valuable = false;
+  int pocket_index = 0;  //used to loop through the spaces in a pocket
+  
+  
   if(my_schoolyard.get_cell(x,y) == TRASH)
     {
-      Trash t;
-      if(m_num_trash < POCKET_SIZE)
+      Trash my_trash;
+      if(my_trash.m_name == "glue")
+        m_IQ -= 2;
+      else if(m_num_trash < POCKET_SIZE)
       {
-        if(t.m_name == "glue")
-          m_IQ -= 2;
-        else
+        m_pocket[m_num_trash] = my_trash;
+        m_num_trash++;
+      }
+      else
+      {
+        while(pocket_index < POCKET_SIZE && !more_valuable)
         {
-          m_pocket[m_num_trash] = t;
-          m_num_trash++;
-          m_trash_value += t.m_value;
+          if(my_trash.m_value > m_pocket[pocket_index].m_value)
+          {
+            m_pocket[pocket_index] = my_trash;
+            more_valuable = true;
+          }
         }
       }
       my_schoolyard.pick_up_trash();
       my_schoolyard.set_cell(EMPTY_SPACE, x, y);
       found = true;
-      cout << m_name << " got " << t.m_name << endl << endl;
+      cout << m_name << " found " << my_trash.m_name << endl << endl;
     }
   return found;
 }
@@ -298,8 +336,7 @@ bool classmate::get_trash(schoolyard & my_schoolyard, const int x, const int y)
 
 ostream & operator << (ostream & os, const classmate & kid)
 {
-  os << kid.m_name << ", who has iq " << kid.m_IQ << " and is at ("
-     << kid.m_position.m_val_X << ", " << kid.m_position.m_val_Y << ")";
+  os << kid.m_name << ", who has iq " << kid.m_IQ;
   return os;
 }
 

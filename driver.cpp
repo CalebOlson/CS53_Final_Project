@@ -52,18 +52,18 @@ int main()
   {
     classmate1.move(my_schoolyard);
     classmate2.move(my_schoolyard);
-    //if(num_moves < 10)
+    if(num_moves < 10)
       cout << my_schoolyard << endl;
     num_moves++;
   }
-  cout << my_schoolyard <<  endl;
+  
   //Eventually will cout the winner
   cout << "The winner is ";
   
-  if(classmate1.get_score() > classmate2.get_score())
-    cout << classmate1 << " with " << classmate1.get_score() << " points.";
+  if(classmate1.get_grade() > classmate2.get_grade())
+    cout << classmate1 << " with " << classmate1.get_grade() << " points.";
   else
-    cout << classmate2 << " with " << classmate2.get_score() << " points.";
+    cout << classmate2 << " with " << classmate2.get_grade() << " points.";
   cout << "\nIt took " << num_moves << " moves to win!" << endl;
   cout << "Goodbye!" << endl;
   return 0;

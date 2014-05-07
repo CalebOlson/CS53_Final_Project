@@ -136,7 +136,9 @@ class classmate
     
     short get_IQ()const;
     
-    double get_score();
+    double get_grade()const;
+    
+    void grade_project(schoolyard & my_schoolyard);
     
     bool isGraded()const;
     
@@ -166,7 +168,6 @@ class classmate
     
     Trash m_pocket[POCKET_SIZE];  //the size of the classmate's pocket
     short m_num_trash;  //number of pieces of trash in the classmate's pocket
-    short m_trash_value; //a running value of all the trash in the classmate's pocket
     
     bool m_graded;  //True if the classmate's project has been graded
     double m_grade;  //The classmate's grade for its assignment
