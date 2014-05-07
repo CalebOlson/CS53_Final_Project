@@ -32,6 +32,12 @@ const char EMPTY_SPACE = ' ';  //a position with nothing in it.
 const char HOOVER = 'H'; //a position containing the teacher.
 const char CLASSMATE = 'C'; //a position containing a schoolmate.
 
+struct point
+{
+  short m_val_X;  //the x position of the point
+  short m_val_Y;  //the y position of the point
+};
+
 /*---------- Class Function Comments ----------*/
 
 //schoolyard():
@@ -108,6 +114,8 @@ class schoolyard
     
     bool set_cell(const char cell_value, const short x_val, const short y_val);
     
+    point get_teach();
+    
     friend ostream & operator << (ostream & os, const schoolyard 
                                   & my_yard);
     
@@ -118,7 +126,7 @@ class schoolyard
     short m_yard_size;  //The size of the schoolyard in one direction
     short m_school_size;  //size of the school in one direction
     short m_trash_count; //How much trash is in the yard
-    
+    point m_teach_loc;
     void build_school();
     
 };

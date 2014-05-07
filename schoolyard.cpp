@@ -37,7 +37,13 @@ schoolyard::schoolyard(const short yard_size, const short school_size)
   build_school();
   
   //Place hoover in a random place in the building.
-  set_cell(HOOVER, rand()%m_school_size-1, rand()%m_school_size-1);
+  do
+  {
+    m_teach_loc.m_val_X = rand()%m_school_size-1;
+    m_teach_loc.m_val_Y = rand()%m_school_size-1;
+  }while((m_teach_loc.m_val_X == m_school_size-1) && (m_teach_loc.m_val_Y == m_school_size-1));
+  cout<<"TEACH: "<<m_teach_loc.m_val_X<<" "<<m_teach_loc.m_val_Y;
+  set_cell(HOOVER, m_teach_loc.m_val_X, m_teach_loc.m_val_Y);
 }
 
 
@@ -124,6 +130,11 @@ void schoolyard::build_school()
   }
   
   return;
+}
+
+point schoolyard::get_teach()
+{
+  return m_teach_loc;
 }
 /*----- Friend Functions -----*/
 

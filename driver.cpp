@@ -48,10 +48,10 @@ int main()
   cout << my_schoolyard << endl;
   
   //Keeps moving while both are not finished and the num moves is less than 10
-  while(my_schoolyard.get_trash_count() != 0 && !classmate1.isGraded() && !classmate2.isGraded())
+  while(!classmate1.isGraded() || !classmate2.isGraded())
   {
-    classmate1.rand_move(my_schoolyard);
-    classmate2.rand_move(my_schoolyard);
+    classmate1.move(my_schoolyard);
+    classmate2.move(my_schoolyard);
     //if(num_moves < 10)
       cout << my_schoolyard << endl;
     num_moves++;

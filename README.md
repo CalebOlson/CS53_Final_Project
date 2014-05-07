@@ -11,7 +11,6 @@ of the teacher then it should call the rand_move function.
 *   modify get_score function into Get_grade function that gets the classmate's 
 grade and removes it from the board while setting m_graded to true.
 *   use the move function instead of rand_move once move_to_teacher is finished
-*   Finish this todo page.  
 
 
 BUGS:

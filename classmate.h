@@ -13,6 +13,9 @@
 #include<ctime>
 #include<fstream>
 
+
+
+
 #include"schoolyard.h"
 
 using namespace std;
@@ -32,13 +35,6 @@ class schoolyard; //Allows passage of a Schoolyard class in the program.
 
 /*---------- Struct Declarations ----------*/
 
-//Represents a point in the array. Holds an x and y value for horizontal and
-//vertical position, respectively.
-struct point
-{
-  short m_val_X;  //the x position of the point
-  short m_val_Y;  //the y position of the point
-};
 
 
 //Represents a piece of trash. Contains a name and the value of the trash when
@@ -151,6 +147,8 @@ class classmate
     
     void move_to_teacher(schoolyard & my_schoolyard);
     
+    void move_to_door(schoolyard & my_schoolyard);
+    
     void move(schoolyard & my_schoolyard);
     
     bool get_trash(schoolyard & my_schoolyard, const int x, const int y);
@@ -171,7 +169,7 @@ class classmate
     short m_trash_value; //a running value of all the trash in the classmate's pocket
     
     bool m_graded;  //True if the classmate's project has been graded
-    short m_grade;  //The classmate's grade for its assignment
+    double m_grade;  //The classmate's grade for its assignment
     
 };
 
