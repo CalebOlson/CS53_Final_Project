@@ -52,7 +52,7 @@ int main()
   {
     classmate1.move(my_schoolyard);
     classmate2.move(my_schoolyard);
-    //if(num_moves < 10)
+    if(num_moves < 10)
       cout << my_schoolyard << endl;
     num_moves++;
   }
