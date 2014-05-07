@@ -188,28 +188,35 @@ void classmate::rand_move(schoolyard & my_schoolyard)
 
 void classmate::move_to_teacher(schoolyard & my_schoolyard)
 {
-  if(m_position.m_val_X < my_schoolyard.get_teach().m_val_X)
+  char value_to_place;
+  
+  if(m_position.m_val_X == my_schoolyard.get_school_size()-1 && m_position.m_val_Y == my_schoolyard.get_school_size()-1)
+    value_to_place = DOOR;
+  else
+    value_to_place = SCHOOL;
+  
+  if(m_position.m_val_X < my_schoolyard.get_teach().m_val_X && valid_move(my_schoolyard,m_position.m_val_X+1,m_position.m_val_Y))
   {
     my_schoolyard.set_cell(CLASSMATE,m_position.m_val_X+1,m_position.m_val_Y);
-    my_schoolyard.set_cell(SCHOOL,m_position.m_val_X,m_position.m_val_Y);
+    my_schoolyard.set_cell(value_to_place,m_position.m_val_X,m_position.m_val_Y);
     m_position.m_val_X++;
   }
-  else if(m_position.m_val_X > my_schoolyard.get_teach().m_val_X)
+  else if(m_position.m_val_X > my_schoolyard.get_teach().m_val_X && valid_move(my_schoolyard,m_position.m_val_X-1,m_position.m_val_Y))
   {
     my_schoolyard.set_cell(CLASSMATE,m_position.m_val_X-1,m_position.m_val_Y);
-    my_schoolyard.set_cell(SCHOOL,m_position.m_val_X,m_position.m_val_Y);
+    my_schoolyard.set_cell(value_to_place,m_position.m_val_X,m_position.m_val_Y);
     m_position.m_val_X--;
   }
-  else if(m_position.m_val_Y < my_schoolyard.get_teach().m_val_Y)
+  else if(m_position.m_val_Y < my_schoolyard.get_teach().m_val_Y&& valid_move(my_schoolyard,m_position.m_val_X,m_position.m_val_Y+1))
   {
     my_schoolyard.set_cell(CLASSMATE,m_position.m_val_X,m_position.m_val_Y+1);
-    my_schoolyard.set_cell(SCHOOL,m_position.m_val_X,m_position.m_val_Y);
+    my_schoolyard.set_cell(value_to_place,m_position.m_val_X,m_position.m_val_Y);
     m_position.m_val_Y++;
   }
-  else if(m_position.m_val_Y > my_schoolyard.get_teach().m_val_Y)
+  else if(m_position.m_val_Y > my_schoolyard.get_teach().m_val_Y && valid_move(my_schoolyard,m_position.m_val_X,m_position.m_val_Y-1))
   {
     my_schoolyard.set_cell(CLASSMATE,m_position.m_val_X,m_position.m_val_Y-1);
-    my_schoolyard.set_cell(SCHOOL,m_position.m_val_X,m_position.m_val_Y);
+    my_schoolyard.set_cell(value_to_place,m_position.m_val_X,m_position.m_val_Y);
     m_position.m_val_Y--;
   }
   return;
@@ -248,10 +255,10 @@ void classmate::move(schoolyard & my_schoolyard)
 {
   if(my_schoolyard.get_trash_count() > 0)
     rand_move(my_schoolyard);
-  else if(m_position.m_val_X > my_schoolyard.get_school_size()-1 && m_position.m_val_Y > my_schoolyard.get_school_size()-1)
+  else if(m_position.m_val_X > my_schoolyard.get_school_size()-1 || m_position.m_val_Y > my_schoolyard.get_school_size()-1)
     move_to_door(my_schoolyard);
-  /*else
-    /*move_to_teacher(my_schoolyard);*/
+  else
+    move_to_teacher(my_schoolyard);
   return;
 }
 
