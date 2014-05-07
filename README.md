@@ -10,6 +10,7 @@ TODO:
 BUGS:
 *   Sometimes Hoover doesn't appear to get placed.
 *   Classmates sometimes dissapear.
+*   Sometimes "holes" appear in the school, perhaps when classmates walk through them.
 
 STRETCH:
 *   Create "smart" movement function.

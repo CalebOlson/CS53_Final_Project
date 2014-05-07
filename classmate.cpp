@@ -23,6 +23,8 @@ classmate::classmate(const string name)
   m_num_trash = 0;  //sets the amount of trash in the classmate's pocket to 0.
   
   m_trash_value = 0;
+  
+  m_graded = false;
 }
 
   
@@ -79,9 +81,15 @@ short classmate::get_IQ()const
   return m_IQ;
 }
 
-double classmate::get_score()const
+double classmate::get_score()
 {
-  return static_cast <double> (m_trash_value) / m_IQ;
+  m_grade = static_cast <double> (m_trash_value) / m_IQ;
+  return m_grade;
+}
+
+bool classmate::isGraded()const
+{
+  return m_graded;
 }
 
 bool classmate::valid_move(const schoolyard & my_schoolyard, const point & 
@@ -145,10 +153,22 @@ void classmate::rand_move(schoolyard & my_schoolyard)
       m_position.m_val_Y--;
     } 
   }
- 
-  m_space_type = my_schoolyard.get_cell(m_position.m_val_X, 
-                                        m_position.m_val_Y);
-  
+  //Prevents "classmate multiplication" bug
+  if(my_schoolyard.get_cell(m_position.m_val_X, 
+    m_position.m_val_Y) != CLASSMATE)
+    {
+       m_space_type = my_schoolyard.get_cell(m_position.m_val_X, m_position.m_val_Y);
+    }
+  else if(my_schoolyard.get_cell(m_position.m_val_X, m_position.m_val_Y) == SCHOOL)
+    {
+      m_space_type = my_schoolyard.get_cell(m_position.m_val_X, 
+      m_position.m_val_Y);
+      m_graded = true;
+    } 
+  else
+    {
+      m_space_type = EMPTY_SPACE;
+    }
   my_schoolyard.set_cell(CLASSMATE, m_position.m_val_X, m_position.m_val_Y);
   return;
 }
@@ -168,12 +188,20 @@ bool classmate::get_trash(schoolyard & my_schoolyard, const int x, const int y)
   if(my_schoolyard.get_cell(x,y) == TRASH)
     {
       Trash t;
-      m_pocket[m_num_trash] = t;
-      m_num_trash++;
+      if(m_num_trash < POCKET_SIZE)
+      {
+        if(t.m_name == "glue")
+          m_IQ -= 2;
+        else
+        {
+          m_pocket[m_num_trash] = t;
+          m_num_trash++;
+          m_trash_value += t.m_value;
+        }
+      }
       my_schoolyard.pick_up_trash();
       my_schoolyard.set_cell(EMPTY_SPACE, x, y);
       found = true;
-      m_trash_value += t.m_value;
       cout << m_name << " got " << t.m_name << "!" 
         << endl << endl;
     }

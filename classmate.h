@@ -91,6 +91,16 @@ struct Trash
 //Pre: the classmate() constructor has been called for the calling object
 //Post: gets the calling object's IQ
 
+//get_score():
+//generates the score of the classmate and returns it
+//Pre: IQ is defined and nonzero
+//Post: Assigns m_grade and returns it
+
+//isGraded():
+//returns if the student's project has been graded or not
+//Pre: none
+//Post: the value of m_graded is returned
+
 //rand_move():
 //moves the calling object one space in a random direction
 //Pre: the classmate() constructor has been called for the calling object
@@ -130,7 +140,9 @@ class classmate
     
     short get_IQ()const;
     
-    double get_score()const;
+    double get_score();
+    
+    bool isGraded()const;
     
     bool valid_move(const schoolyard & my_schoolyard, const point & my_point
                     )const;

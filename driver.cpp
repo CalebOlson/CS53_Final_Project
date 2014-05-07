@@ -48,8 +48,7 @@ int main()
   cout << my_schoolyard << endl;
   
   //Keeps moving while both are not finished and the num moves is less than 10
-  //the num moves is a placeholder to prevent infinite looping
-  while(my_schoolyard.get_trash_count() != 0 && num_moves < 10)
+  while(my_schoolyard.get_trash_count() != 0 && !classmate1.isGraded() && !classmate2.isGraded())
   {
     classmate1.rand_move(my_schoolyard);
     classmate2.rand_move(my_schoolyard);
@@ -57,17 +56,9 @@ int main()
       cout << my_schoolyard << endl;
     num_moves++;
   }
+  cout << my_schoolyard <<  endl;
   //Eventually will cout the winner
   cout << "The winner is ";
-  
-  /* Sudo Code:
-  
-  if(c1.isWinner)
-    cout c1
-  else
-    cout c2
-    
-  */
   
   if(classmate1.get_score() > classmate2.get_score())
     cout << classmate1 << " with " << classmate1.get_score() << " points.";
