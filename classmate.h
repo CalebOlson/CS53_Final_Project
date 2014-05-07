@@ -13,9 +13,6 @@
 #include<ctime>
 #include<fstream>
 
-
-
-
 #include"schoolyard.h"
 
 using namespace std;
@@ -29,9 +26,6 @@ const short MIN_IQ = 50;
 const short NUM_MOVE_DIRECTIONS = 4;
 const short POCKET_SIZE = 10;
 
-/*---------- Forward Declarations ----------*/
-
-class schoolyard; //Allows passage of a Schoolyard class in the program. 
 
 /*---------- Struct Declarations ----------*/
 
@@ -60,14 +54,10 @@ struct Trash
 
 //classmate():
 //constructor that makes a classmate object with a random IQ, a name that
-//defaults to DEFAULT_NAME and calls the place() function for the classmate
+//defaults to DEFAULT_NAME, 0 trash, and an ungraded project.
 //Pre: none
-//Post: The calling object has a value for m_name, m_position, and m_IQ
-
-//go_to_school(): 
-//gives the calling classmate a location on the yard
-//Pre: the yard has been initialized 
-//Post: m_position represents a random point on the yard
+//Post: The calling object has a value for m_name, m_num_trash,m_graded,
+//and m_IQ
 
 //go_to_school():
 //gives the calling object a location value on the array
@@ -78,41 +68,73 @@ struct Trash
 //set_IQ():
 //sets the IQ of the calling object
 //Pre: the classmate() constructor has been called for the calling object.
-//IQ is greater than 0
-//Post: the IQ of the calling object is set to IQ if it is greater than 0
-//Otherwise an variable representing an error is returned
+//IQ is greater than 0 and less than 250
+//Post: the IQ of the calling object is set to IQ if it is greater than 0 and
+//less than 250. Otherwise a variable representing an error is returned
 
 //get_IQ():
 //returns the IQ of the calling object
 //Pre: the classmate() constructor has been called for the calling object
 //Post: gets the calling object's IQ
 
-//get_score():
-//generates the score of the classmate and returns it
-//Pre: IQ is defined and nonzero
-//Post: Assigns m_grade and returns it
+//grade_project():
+//grades the classmates project and removes it from the board
+//Pre: my_schoolyard has been initialized, m_pocket is of size POCKET_SIZE 
+//Post: m_grade is the classmates grade, m_graded is true, the C representing
+//the classmate is removed from the schoolyard
+
+
+//get_grade():
+//returns the classmates grade
+//Pre: m_grade has a valid value
+//Post: returns the classmates grade, m_grade
 
 //isGraded():
 //returns if the student's project has been graded or not
 //Pre: none
 //Post: the value of m_graded is returned
 
+//valid_move():
+//checks if the given move is valid for the calling classmate
+//Pre: the schoolyard constructor has been called for my_schoolyard, the
+//classmate constructor has been called for the calling classmate.
+//Post: returns weather or not the move is valid
+
 //rand_move():
 //moves the calling object one space in a random direction
-//Pre: the classmate() constructor has been called for the calling object
+//Pre: the classmate() constructor has been called for the calling object, 
+//the schoolyard constructor has been called for my_schoolyard
 //Post: m_position of the calling object has been shifted one space in a random
-//direction without going outside the array
+//direction without going outside the array and the C representing the calling
+//object has been moved to the respective place on my_schoolyard.
 
 //move_to_teacher():
-//moves the calling object towards the teacher
-//Pre: the classmate constructor has been called for the calling object
-//Post: m_position of the calling object has been shifted to an adjacent trash
-//object.
+//moves the calling object towards the teacher if possible
+//Pre: the classmate constructor has been called for the calling object, the 
+//schoolyard constructor has been called for my_schoolyard
+//Post: m_position of the calling object has been shifted to an adjacent cell
+//on the schoolyard. if possible it is in the direction of the teacher
+
+//move_to_door():
+//moves the calling object towards the door if possible
+//Pre: the classmate constructor has been called for the calling object, the 
+//schoolyard constructor has been called for my_schoolyard
+//Post: m_position of the calling object has been shifted to an adjacent cell
+//on the schoolyard. if possible it is in the direction of the door
+
+//move():
+//Moves the calling object one space on the board or has the object turn in 
+//its project
+//Pre: the classmate constructor has been called for the calling object, the 
+//schoolyard constructor has been called for my_schoolyard
+//Post: The classmate is either moved one space on my_schoolyard or its project
+//is graded.
 
 //get_trash():
 //grabs trash from an adjacent cell
 //Pre: The x and y coordinates passed are valid
-//Post: Trash has been added to the classmate's pocket, and the cell is cleared.
+//Post: Trash has been added to the classmate's pocket if there is room 
+//and the cell is cleared.
 
 //operator <<():
 //Overloads the << operator to print out a classmate

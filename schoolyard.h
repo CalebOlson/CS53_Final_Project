@@ -42,11 +42,11 @@ struct point
 
 //schoolyard():
 //a constructor that gives the schoolyard the desired size and calls 
-//build_school() to populate it
+//build_school() to populate it. Then it puts Hoover in the school
 //Pre: yard_size is no larger than MAX_SCHOOLYARD_SIZE and school_size is 
 //smaller than yard_size.
 //Post: build_school() is called and m_yard_size and m_school_size have valid 
-//values.
+//values. Hoover is placed in the school
 
 //get_yard_size():
 //returns the size of the schoolyard
@@ -57,11 +57,6 @@ struct point
 //returns the size of the school
 //Pre: the schoolyard() constructor has been called for the calling object
 //Post: the school size is returned
-
-//operator <<():
-//overrides the << operator to correctly print a schoolyard to the screen
-//Pre: the schoolyard() constructor has been called for the calling object
-//Post: a correctly formatted schoolyard is printed to the screen.
 
 //get_trash_count():
 //returns the amount of trash currently in the schoolyard
@@ -84,6 +79,11 @@ struct point
 //post: the char value at x,y in the map will be changed to c, and
 //returns true if this operation was successful
 
+//get_teach():
+//Returns the location of hoover.
+//Pre: the schoolyard constructor has been called for the calling object
+//Post: the point representing the position of Hoover is returned.
+
 //build_school():
 //fills the schoolyard with empty space and then adds a school, a door, and
 //trash
@@ -91,6 +91,11 @@ struct point
 //Post: there is a school of size m_school_size, there is a door on the 
 //bottom right of the school, the rest of the schoolyard is filled with empty
 //space, and 10% of the empty space has trash in it 
+
+//operator <<():
+//overrides the << operator to correctly print a schoolyard to the screen
+//Pre: the schoolyard() constructor has been called for the calling object
+//Post: a correctly formatted schoolyard is printed to the screen.
 
 /*---------- Class Declaration ----------*/
 

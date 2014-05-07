@@ -83,6 +83,8 @@ short classmate::get_IQ()const
 void classmate::grade_project(schoolyard & my_schoolyard)
 {
   int total_trash_value = 0;  //total value of the trash in the pocket
+  
+  //cycles through the pocket and adds up the values of all the trash
   for(int i = 0; i < POCKET_SIZE; i++)
   {
     total_trash_value = m_pocket[i].m_value;
@@ -90,6 +92,7 @@ void classmate::grade_project(schoolyard & my_schoolyard)
   
   m_grade = (static_cast<double>(total_trash_value))/ m_IQ;
   
+  //removes the classmate from the school
   my_schoolyard.set_cell(m_space_type, m_position.m_val_X, m_position.m_val_Y);
   
   m_graded = true;
@@ -156,6 +159,7 @@ void classmate::rand_move(schoolyard & my_schoolyard)
   //true if the classmate has moved this time
   bool has_moved= false;
   
+  //sets the old cell the classmate was on to it's original type
   my_schoolyard.set_cell(m_space_type, m_position.m_val_X, 
                          m_position.m_val_Y);
   
@@ -163,8 +167,10 @@ void classmate::rand_move(schoolyard & my_schoolyard)
  
   while(!has_moved)  //loops until the classmate makes a move
   {
+    //represents the direction the classmate might move in
     short move_direction = rand()%(NUM_MOVE_DIRECTIONS + 1);
   
+    //decided which direction to move the classmate
     if(move_direction == 1 && valid_move(my_schoolyard, m_position.m_val_X - 1,
        m_position.m_val_Y))
     {
@@ -195,18 +201,24 @@ void classmate::rand_move(schoolyard & my_schoolyard)
     }
   }
  
+  //remembers the type of cell the classmate moved to
   m_space_type = my_schoolyard.get_cell(m_position.m_val_X,
                                         m_position.m_val_Y);
 
+  //moves the character representing the classmate on the array to its new
+  //position
   my_schoolyard.set_cell(CLASSMATE, m_position.m_val_X, m_position.m_val_Y);
   return;
 }
 
+
 void classmate::move_to_teacher(schoolyard & my_schoolyard)
 {
+  //sets the old cell the classmate was on to it's original type
   my_schoolyard.set_cell(m_space_type, m_position.m_val_X, 
                          m_position.m_val_Y);
-  
+                         
+  //decides which direction to move the classmate
   if(m_position.m_val_X < my_schoolyard.get_teach().m_val_X && 
      valid_move(my_schoolyard,m_position.m_val_X+1,m_position.m_val_Y))
   {
@@ -227,20 +239,30 @@ void classmate::move_to_teacher(schoolyard & my_schoolyard)
   {
     m_position.m_val_Y--;
   }
+  else
+    //uses the rand move function if there are no valid moves towards the 
+    //teacher
+    rand_move(my_schoolyard);
   
+  //remembers the type of cell the classmate moved to
   m_space_type = my_schoolyard.get_cell(m_position.m_val_X, 
                                         m_position.m_val_Y);
-
+  
+  //moves the character representing the classmate on the array to its new
+  //position
   my_schoolyard.set_cell(CLASSMATE, m_position.m_val_X, m_position.m_val_Y);
   
   return;
 }
 
+
 void classmate::move_to_door(schoolyard & my_schoolyard)
 {
+  //sets the old cell the classmate was on to it's original type
   my_schoolyard.set_cell(m_space_type, m_position.m_val_X, 
                          m_position.m_val_Y);
   
+  //decides which direction to move the classmate
   if(m_position.m_val_X < my_schoolyard.get_school_size() - 1 && 
      valid_move(my_schoolyard,m_position.m_val_X+1,m_position.m_val_Y))
   {
@@ -261,22 +283,36 @@ void classmate::move_to_door(schoolyard & my_schoolyard)
   {
     m_position.m_val_Y--;
   }
+  else
+    //uses the rand move function if there are no valid moves towards the 
+    //teacher
+    rand_move(my_schoolyard);
   
+  //remembers the type of cell the classmate moved to
   m_space_type = my_schoolyard.get_cell(m_position.m_val_X,
                                         m_position.m_val_Y);
 
+  //moves the character representing the classmate on the array to its new
+  //position
   my_schoolyard.set_cell(CLASSMATE, m_position.m_val_X, m_position.m_val_Y);
   
   return;
 }
 
+
 void classmate::move(schoolyard & my_schoolyard)
 {
+  //if there is still trash the classmate will move normally
   if(my_schoolyard.get_trash_count() > 0)
     rand_move(my_schoolyard);
+  
+  //If there is no more trash the classmate first checks if it is in the school 
+  //If it is not it moves towards the door.
   else if(m_position.m_val_X > my_schoolyard.get_school_size()-1 ||
           m_position.m_val_Y > my_schoolyard.get_school_size()-1)
     move_to_door(my_schoolyard);
+    
+  //If it is in the school it checks if it can turn in its project
   else if((my_schoolyard.get_teach().m_val_X == m_position.m_val_X) &&
           (my_schoolyard.get_teach().m_val_Y == m_position.m_val_Y+1 ||
            my_schoolyard.get_teach().m_val_Y == m_position.m_val_Y-1))
@@ -289,6 +325,8 @@ void classmate::move(schoolyard & my_schoolyard)
   {
     grade_project(my_schoolyard);
   }
+  
+  //if it can't turn in its project it moves towards the teacher
   else
     move_to_teacher(my_schoolyard);
   return;
@@ -302,10 +340,13 @@ bool classmate::get_trash(schoolyard & my_schoolyard, const int x, const int y)
   bool more_valuable = false;
   int pocket_index = 0;  //used to loop through the spaces in a pocket
   
-  
+  //checks if there is trash in the cell given
   if(my_schoolyard.get_cell(x,y) == TRASH)
     {
+      //creates a new trash object that represents the one picked up
       Trash my_trash;
+      
+      //decides what should be done with the trash
       if(my_trash.m_name == "glue")
         m_IQ -= 2;
       else if(m_num_trash < POCKET_SIZE)
@@ -331,6 +372,7 @@ bool classmate::get_trash(schoolyard & my_schoolyard, const int x, const int y)
     }
   return found;
 }
+
 
 /*----- Friend Functions -----*/
 

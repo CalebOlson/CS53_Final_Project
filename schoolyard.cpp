@@ -78,10 +78,12 @@ char schoolyard::get_cell(const short x_val, const short y_val)const
   return m_schoolyard_map[x_val][y_val];
 }
 
+
 bool schoolyard::set_cell(const char cell_value, const short x_val, const short
                           y_val)
 {
-  bool isSet = false;
+  bool isSet = false;  //is true if the cell was successfully set
+  
   if(x_val >= 0 && x_val < MAX_SCHOOLYARD_SIZE && y_val >= 0 && y_val <
   MAX_SCHOOLYARD_SIZE)
   {
@@ -89,6 +91,12 @@ bool schoolyard::set_cell(const char cell_value, const short x_val, const short
     isSet = true;
   }
   return isSet;
+}
+
+
+point schoolyard::get_teach()
+{
+  return m_teach_loc;
 }
 
 
@@ -133,10 +141,7 @@ void schoolyard::build_school()
   return;
 }
 
-point schoolyard::get_teach()
-{
-  return m_teach_loc;
-}
+
 /*----- Friend Functions -----*/
 
 ostream & operator << (ostream & os, const schoolyard & my_yard)

@@ -57,13 +57,13 @@ int main()
     num_moves++;
   }
   
-  //Eventually will cout the winner
+  //Will output the winner
   cout << "The winner is ";
   
   if(classmate1.get_grade() > classmate2.get_grade())
-    cout << classmate1 << " with " << classmate1.get_grade() << " points.";
+    cout << classmate1 << " with a grade of " << classmate1.get_grade() << ".";
   else
-    cout << classmate2 << " with " << classmate2.get_grade() << " points.";
+    cout << classmate2 << " with a grade of " << classmate2.get_grade() << ".";
   cout << "\nIt took " << num_moves << " moves to win!" << endl;
   cout << "Goodbye!" << endl;
   return 0;
