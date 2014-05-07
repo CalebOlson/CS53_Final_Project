@@ -87,7 +87,7 @@ void classmate::grade_project(schoolyard & my_schoolyard)
   //cycles through the pocket and adds up the values of all the trash
   for(int i = 0; i < POCKET_SIZE; i++)
   {
-    total_trash_value = m_pocket[i].m_value;
+    total_trash_value += m_pocket[i].m_value;
   }
   
   m_grade = (static_cast<double>(total_trash_value))/ m_IQ;

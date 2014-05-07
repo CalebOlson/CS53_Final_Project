@@ -83,7 +83,6 @@ struct Trash
 //Post: m_grade is the classmates grade, m_graded is true, the C representing
 //the classmate is removed from the schoolyard
 
-
 //get_grade():
 //returns the classmates grade
 //Pre: m_grade has a valid value
