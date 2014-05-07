@@ -107,8 +107,8 @@ struct Trash
 //Post: m_position of the calling object has been shifted one space in a random
 //direction without going outside the array
 
-//smart_move():
-//moves the calling object towards a trash object
+//move_to_teacher():
+//moves the calling object towards the teacher
 //Pre: the classmate constructor has been called for the calling object
 //Post: m_position of the calling object has been shifted to an adjacent trash
 //object.
@@ -144,12 +144,14 @@ class classmate
     
     bool isGraded()const;
     
-    bool valid_move(const schoolyard & my_schoolyard, const point & my_point
-                    )const;
+    bool valid_move(const schoolyard & my_schoolyard, const int  
+                               X_val, const int Y_val)const;
     
     void rand_move(schoolyard & my_schoolyard);
     
-    void smart_move(schoolyard & my_schoolyard);
+    void move_to_teacher(schoolyard & my_schoolyard);
+    
+    void move(schoolyard & my_schoolyard);
     
     bool get_trash(schoolyard & my_schoolyard, const int x, const int y);
     

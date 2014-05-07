@@ -52,7 +52,7 @@ int main()
   {
     classmate1.rand_move(my_schoolyard);
     classmate2.rand_move(my_schoolyard);
-    if(num_moves < 10)
+    //if(num_moves < 10)
       cout << my_schoolyard << endl;
     num_moves++;
   }
@@ -64,7 +64,7 @@ int main()
     cout << classmate1 << " with " << classmate1.get_score() << " points.";
   else
     cout << classmate2 << " with " << classmate2.get_score() << " points.";
-  cout << "It took " << num_moves << " to win!" << endl;
+  cout << "\nIt took " << num_moves << " moves to win!" << endl;
   cout << "Goodbye!" << endl;
   return 0;
 }
